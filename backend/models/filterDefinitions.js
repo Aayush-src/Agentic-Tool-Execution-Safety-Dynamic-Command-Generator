@@ -1,5 +1,5 @@
 const Filter = require('./filter');
-export const filterDefinitions = {
+const filterDefinitions = {
 
     resize: (width, height) =>
         new Filter('video', `scale=${width}:${height},setsar=1`, { width, height }),
@@ -31,7 +31,6 @@ export const filterDefinitions = {
     trim: (start, end) =>
         new Filter('video', `trim=start=${start}:end=${end},setpts=PTS-STARTPTS`, { start, end }),
 
-    // 🎨 COLOR & EFFECTS
     brightness: (value = 0.1) =>
         new Filter('video', `eq=brightness=${value}`, { value }),
 
@@ -123,3 +122,4 @@ export const filterDefinitions = {
     concat: (n = 2) =>
         new Filter('complex', `concat=n=${n}:v=1:a=1`, { n }),
 };
+module.exports = filterDefinitions;

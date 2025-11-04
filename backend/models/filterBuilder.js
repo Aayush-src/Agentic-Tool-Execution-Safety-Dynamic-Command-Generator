@@ -14,13 +14,14 @@ class FilterBuilder {
         return this; //new thing this makes it chaining
     }
     build(inputFiles = ["input.mp4"], output = "output.mp4") {
+        console.log('build invoked');
+        console.log(this.filters);
         let cmd = "";
         for (const input of inputFiles)
             cmd += ` -i ${input}`;
-
-        const hasComplex = this.filters.some(f => f.type === "complex");
 
     }
 
 
 }
+new FilterBuilder().add('overlayImage', [20, 30, 32, 33]).add('resize', [20, 30]).build();
